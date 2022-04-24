@@ -1,0 +1,84 @@
+<template>
+    <template if:true={submitClicked}>
+        <lightning-layout>         
+            <lightning-layout-item  size="3"></lightning-layout-item>
+            <lightning-layout-item class="slds-p-horizontal_medium slds-p-top_xx-large" size="6">
+                <h4 >Thank you for contacting "Yellow Car" Support !!</h4>
+                <h4 >You Can now schedule a An On Line Session with our Agents</h4>
+            </lightning-layout-item>
+            <lightning-layout-item  size="3"></lightning-layout-item>
+        </lightning-layout>
+    </template>
+        
+            
+    <template if:false={submitClicked}>           
+        <lightning-layout multiple-rows="true">       
+            <lightning-layout-item  size="12">
+                <lightning-input class='slds-p-around_small'
+                    type="text" 
+                    label="FirstName"
+                    name="FirstName"
+                    onchange={extraInputChanged}
+                    required>
+                </lightning-input>   
+            </lightning-layout-item>
+
+            <lightning-layout-item  size="12">
+                <lightning-input class='slds-p-around_small'
+                    type="text" 
+                    label="LastName"
+                    name="LastName" 
+                    onchange={extraInputChanged}
+                    required>
+                </lightning-input>     
+            </lightning-layout-item>
+           
+            <lightning-layout-item  size="12">
+                <lightning-input class='slds-p-around_small'
+                    type="text" 
+                    label="Email"
+                    name="Email"
+                    onchange={extraInputChanged}
+                    required>
+                </lightning-input>   
+            </lightning-layout-item>
+            
+        
+            <lightning-layout-item  size="12">
+                <lightning-input class='slds-p-around_small'
+                    type="text" 
+                    label="Reason of Contact - Description"
+                    name="Description"
+                    onchange={extraInputChanged}>
+                </lightning-input>   
+            </lightning-layout-item>
+            
+            <lightning-layout-item  size="3"></lightning-layout-item>
+            <lightning-layout-item  class="slds-p-horizontal_medium slds-p-top_xx-large" size="6">
+                <lightning-file-upload
+                    label="Attach Images"
+                    name="fileUploader"
+                    accept={acceptedFormats}
+                    multiple
+                    onuploadfinished={handleUploadFinished}>
+                </lightning-file-upload>
+                <p> {numOfUploadedFiles} - Files Uploaded </p>
+                <p> {uploadedFilesNames}</p>    
+            </lightning-layout-item>
+            <lightning-layout-item  size="3"></lightning-layout-item> 
+      
+            <lightning-layout-item  size="4"></lightning-layout-item>
+            <lightning-layout-item  class="slds-p-horizontal_medium slds-p-top_xx-large" size="4">
+                <lightning-button class="slds-button slds-button_stretch"
+                    variant="natural" 
+                    label="Submit"
+                    title=""
+                    onclick={submit}
+                    disabled={disableSubmit}>
+                </lightning-button>   
+            </lightning-layout-item>
+            <lightning-layout-item  size="4"></lightning-layout-item>
+        </lightning-layout>
+    </template>
+            
+</template>
