@@ -51,16 +51,14 @@ public with sharing class SelfServiceController {
         createAndInsertFiles(contactUsCase, commSelfServiceInput.ssAttachedFiles);//DML
         
         
-        // WorkOrder contactUsWorkOrder = new WorkOrder();
-        // System.debug('submitCase insert Case commSelfServiceInput = ' + commSelfServiceInput);
-        
-        // //To save as the workType for this call
-        // WorkType wt = new WorkType(Id = '08q69000000LBjiAAG');
-        // ServiceTerritory st = new ServiceTerritory(Id ='0Hh69000000LA2tCAG' );
-        // contactUsWorkOrder.ServiceTerritoryId = st.Id;
-        // contactUsWorkOrder.WorkTypeId = wt.Id;
-        // contactUsWorkOrder.CaseId = caseId;
-        // insert contactUsWorkOrder; //DML
+        WorkOrder contactUsWorkOrder = new WorkOrder();
+
+        WorkType wt = [SELECT Id, Name FROM WorkType WHERE name='OnLine Session with Agent' LIMIT 1]; //custom MTD !!!!!!!!
+        ServiceTerritory teritory = [SELECT Id, Name FROM ServiceTerritory  WHERE name = 'Israel'  LIMIT 1]; //custom MTD !!!!!!!!!!
+        contactUsWorkOrder.ServiceTerritoryId = teritory.Id;
+        contactUsWorkOrder.WorkTypeId = wt.Id;
+        contactUsWorkOrder.CaseId = caseId;
+        insert contactUsWorkOrder; //DML
 
         
            
